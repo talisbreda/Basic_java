@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Calculadora extends javax.swing.JFrame {
@@ -9,9 +8,9 @@ public class Calculadora extends javax.swing.JFrame {
     boolean convertTest;
     double convertTestDouble;
     ArrayList<String> values = new ArrayList<String>();
-    double[] valuesDouble = new double[255];
+    double[] finalValues = new double[255];
     boolean wait = false;
-    String value = "";
+    String newValue = "";
     String afterComma = ",";
 
     public Calculadora() {
@@ -396,7 +395,7 @@ public class Calculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldScreen(java.awt.event.ActionEvent evt) {
-        // screen       
+        // screen
     }
 
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,9 +513,9 @@ public class Calculadora extends javax.swing.JFrame {
         screen = "0";
         btn = "0";
         cont = 0;
-        value = "";
+        newValue = "";
         for (int i = 0; i < 255; i++) {
-            valuesDouble[i] = 0;
+            finalValues[i] = 0;
         }
         values.clear();
         values.add("0");
@@ -527,40 +526,26 @@ public class Calculadora extends javax.swing.JFrame {
         // =
         // Joining digits
         for (int i = 0; i < values.size(); i++) {
-            convertTest = isNumber(values.get(i));
-
-            if (convertTest == true) {
-                
-            }
-
-            if (convertTest != false) {
-                if (values.get(i).length() == 1 && wait == false) {
-                    wait = true;
-                    values.add("");
-                    if (value.equals("-") && (isNumber(values.get(i + 1)) == false || i == values.size() - 1)) {
-                        value += values.get(i);
-                        values.set(i, value);
-                        value = "";
+            if (isNumber(values.get(i)) == true) {
+                newValue += values.get(i);
+                values.set(i, "");
+                values.set(cont, newValue);
+                finalValues[cont] = Double.parseDouble(newValue);
+            } else {
+                if (values.contains("")) {
+                    for (int j = 0; j < values.size(); j++) {
+                        if (values.get(j).isEmpty()) {
+                            values.remove(j);
+                            i--;
+                        }
                     }
-                } else {
-                    cont++;
-                    value += values.get(i - cont);
-                    value += values.get(i);
-                    values.set(i - cont, value);
-                    value = "";
-                    values.set(i, "");
                 }
-            } else if (values.get(i).equals("-")) {
-                value += "-";
-                if (i != 0) {
-                    values.set(i, "+");
-                }
-            }
-            if (convertTest == false) {
-                cont = 0;
-                wait = false;
+                cont = i + 1;
+                newValue = "";
             }
         }
+        cont = 0;
+        newValue = "";
         // Treating division by zero
         if (values.contains("/")) {
             for (int i = 0; i < values.size(); i++) {
@@ -581,14 +566,14 @@ public class Calculadora extends javax.swing.JFrame {
                     break;
                 }
             }
-            value = "";
-            value = values.get(posVirgula - 1);
-            value += afterComma;
-            values.set(posVirgula - 1, value);
+            newValue = "";
+            newValue = values.get(posVirgula - 1);
+            newValue += afterComma;
+            values.set(posVirgula - 1, newValue);
             values.set(posVirgula, "");
             values.set(posVirgula + 1, "");
             afterComma = "0";
-            values.set(posVirgula - 1, value.replace(',', '.'));
+            values.set(posVirgula - 1, newValue.replace(',', '.'));
         }
         // Deleting empty strings inside the array
         while (values.contains("")) {
@@ -626,10 +611,10 @@ public class Calculadora extends javax.swing.JFrame {
 
     }
 
-    public boolean isNumber(String value) {
+    public boolean isNumber(String newValue) {
         // Testing if character is a number or an operator
         try {
-            convertTestDouble = Double.parseDouble(value);
+            convertTestDouble = Double.parseDouble(newValue);
             return true;
         } catch (Exception e) {
             return false;
@@ -648,18 +633,18 @@ public class Calculadora extends javax.swing.JFrame {
                 if (!isNumber(values.get(i))) {
                     switch (values.get(i)) {
                         case "^":
-                            valuesDouble[0] = Double.parseDouble(values.get(i - 1));
-                            valuesDouble[1] = Double.parseDouble(values.get(i + 1));
-                            values.set(i - 1, String.valueOf(Math.pow(valuesDouble[0], valuesDouble[1])));
+                            finalValues[0] = Double.parseDouble(values.get(i - 1));
+                            finalValues[1] = Double.parseDouble(values.get(i + 1));
+                            values.set(i - 1, String.valueOf(Math.pow(finalValues[0], finalValues[1])));
                             removeValues(i);
                             continue;
                         case "\u221a":
-                            valuesDouble[0] = Double.parseDouble(values.get(i + 1));
+                            finalValues[0] = Double.parseDouble(values.get(i + 1));
                             if (i > 0 && isNumber(values.get(i - 1))) {
                                 values.set(i, "*");
-                                values.set(i + 1, String.valueOf(Math.sqrt(valuesDouble[0])));
+                                values.set(i + 1, String.valueOf(Math.sqrt(finalValues[0])));
                             } else {
-                                values.set(i, String.valueOf(Math.sqrt(valuesDouble[0])));
+                                values.set(i, String.valueOf(Math.sqrt(finalValues[0])));
                                 values.remove(i + 1);
                             }
                             i = 0;
@@ -668,15 +653,15 @@ public class Calculadora extends javax.swing.JFrame {
             }
             for (int i = 0; i < values.size(); i++) {
                 if (!isNumber(values.get(i))) {
-                    valuesDouble[0] = Double.parseDouble(values.get(i - 1));
-                    valuesDouble[1] = Double.parseDouble(values.get(i + 1));
+                    finalValues[0] = Double.parseDouble(values.get(i - 1));
+                    finalValues[1] = Double.parseDouble(values.get(i + 1));
                     switch (values.get(i)) {
                         case "/":
-                            values.set(i - 1, String.valueOf(valuesDouble[0] / valuesDouble[1]));
+                            values.set(i - 1, String.valueOf(finalValues[0] / finalValues[1]));
                             removeValues(i);
                             continue;
                         case "*":
-                            values.set(i - 1, String.valueOf(valuesDouble[0] * valuesDouble[1]));
+                            values.set(i - 1, String.valueOf(finalValues[0] * finalValues[1]));
                             removeValues(i);
                             continue;
                     }
@@ -684,15 +669,15 @@ public class Calculadora extends javax.swing.JFrame {
             }
             for (int i = 0; i < values.size(); i++) {
                 if (!isNumber(values.get(i))) {
-                    valuesDouble[0] = Double.parseDouble(values.get(i - 1));
-                    valuesDouble[1] = Double.parseDouble(values.get(i + 1));
+                    finalValues[0] = Double.parseDouble(values.get(i - 1));
+                    finalValues[1] = Double.parseDouble(values.get(i + 1));
                     switch (values.get(i)) {
                         case "-":
-                            values.set(i - 1, String.valueOf(valuesDouble[0] - valuesDouble[1]));
+                            values.set(i - 1, String.valueOf(finalValues[0] - finalValues[1]));
                             removeValues(i);
                             continue;
                         case "+":
-                            values.set(i - 1, String.valueOf(valuesDouble[0] + valuesDouble[1]));
+                            values.set(i - 1, String.valueOf(finalValues[0] + finalValues[1]));
                             removeValues(i);
                             continue;
                     }
