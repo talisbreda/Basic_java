@@ -559,21 +559,19 @@ public class Calculadora extends javax.swing.JFrame {
         }
         // Joining comma with digits around it
         while (values.contains(",")) {
-            int posVirgula = values.indexOf(",");
+            int commaPosition = values.indexOf(",");
             for (int i = 1; i < values.size(); i++) {
-                if (isNumber(values.get(posVirgula + i)) != false) {
-                    afterComma += values.get(posVirgula + i);
+                if (isNumber(values.get(commaPosition + i))) {
+                    afterComma += values.get(commaPosition + i);
                     break;
                 }
             }
-            newValue = "";
-            newValue = values.get(posVirgula - 1);
-            newValue += afterComma;
-            values.set(posVirgula - 1, newValue);
-            values.set(posVirgula, "");
-            values.set(posVirgula + 1, "");
-            afterComma = "0";
-            values.set(posVirgula - 1, newValue.replace(',', '.'));
+            newValue = values.get(commaPosition - 1) + afterComma;
+            values.set(commaPosition - 1, newValue);
+            values.remove(commaPosition + 1);
+            values.remove(commaPosition);
+            afterComma = ",";
+            values.set(commaPosition - 1, newValue.replace(',', '.'));
         }
         // Deleting empty strings inside the array
         while (values.contains("")) {
@@ -596,8 +594,7 @@ public class Calculadora extends javax.swing.JFrame {
             // If an operator is typed right after the other, replace the older one with the
             // recent
             values.set(values.size() - 1, btn);
-            screen = screen.substring(0, screen.length() - 1);
-            screen += values.get(values.size() - 1);
+            screen = screen.substring(0, screen.length() - 1) + values.get(values.size() - 1);
             jTextField1.setText(screen);
         } else if (screen.equals("0")) {
             screen = btn;
