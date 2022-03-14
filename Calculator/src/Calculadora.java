@@ -1,6 +1,11 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-public class Calculadora extends javax.swing.JFrame {
+public class Calculadora extends JFrame implements KeyListener {
 
     String btn;
     String screen = "";
@@ -14,10 +19,18 @@ public class Calculadora extends javax.swing.JFrame {
     String afterComma = ",";
 
     public Calculadora() {
+        super("pq nao funcionaaaaaa");
+        Container c = getContentPane();
+        FlowLayout layout = new FlowLayout(FlowLayout.LEFT);
+        c.setLayout(layout);
+
         initComponents();
         jTextField1.setText("0");
         values.add("0");
         screen = "0";
+        setSize(350, 400);
+        setVisible(true);
+
     }
 
     // @SuppressWarnings("unchecked")
@@ -54,7 +67,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton1.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ActionPerformed();
             }
         });
 
@@ -62,7 +75,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton2.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton4ActionPerformed();
             }
         });
 
@@ -70,7 +83,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton3.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton3ActionPerformed();
             }
         });
 
@@ -78,7 +91,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton4.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton2ActionPerformed();
             }
         });
 
@@ -86,7 +99,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton5.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton5ActionPerformed();
             }
         });
 
@@ -94,7 +107,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton6.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButton6ActionPerformed();
             }
         });
 
@@ -102,7 +115,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton7.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButton7ActionPerformed();
             }
         });
 
@@ -110,7 +123,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton8.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButton8ActionPerformed();
             }
         });
 
@@ -118,7 +131,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton9.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButton9ActionPerformed();
             }
         });
 
@@ -126,7 +139,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton10.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton0ActionPerformed(evt);
+                jButton0ActionPerformed();
             }
         });
 
@@ -134,7 +147,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton11.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jButton11ActionPerformed();
             }
         });
 
@@ -142,7 +155,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton12.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                jButton12ActionPerformed();
             }
         });
 
@@ -150,7 +163,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton13.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                jButton13ActionPerformed();
             }
         });
 
@@ -158,7 +171,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton14.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jButton14ActionPerformed();
             }
         });
 
@@ -166,7 +179,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton15.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                jButton15ActionPerformed();
             }
         });
 
@@ -174,7 +187,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton16.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                jButton16ActionPerformed();
             }
         });
 
@@ -182,7 +195,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton17.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                jButton17ActionPerformed();
             }
         });
 
@@ -191,15 +204,16 @@ public class Calculadora extends javax.swing.JFrame {
         jButton18.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                jButton18ActionPerformed();
             }
         });
 
         jButton19.setText("C");
+        jButton19.addKeyListener(this);
         jButton19.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                jButton19ActionPerformed();
             }
         });
 
@@ -207,14 +221,14 @@ public class Calculadora extends javax.swing.JFrame {
         jButton20.setPreferredSize(new java.awt.Dimension(60, 40));
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
+                jButton20ActionPerformed();
             }
         });
 
         jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldScreen(evt);
+                jTextFieldScreen();
             }
         });
 
@@ -394,120 +408,173 @@ public class Calculadora extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldScreen(java.awt.event.ActionEvent evt) {
+    @Override
+    public void keyPressed(KeyEvent e) {
+//        JOptionPane.showMessageDialog(null, e.getKeyCode());
+        btn = switch (e.getKeyCode()) {
+            case 48:
+            case 96: yield "0";
+            case 49:
+            case 97: yield "1";
+            case 50:
+            case 98: yield "2";
+            case 51:
+            case 99: yield "3";
+            case 52:
+            case 100: yield "4";
+            case 53:
+            case 101: yield "5";
+            case 54:
+            case 102: yield "6";
+            case 55:
+            case 103: yield "7";
+            case 56:
+            case 104: yield "8";
+            case 57:
+            case 105: yield "9";
+            case 107: yield "+";
+            case 109: yield "-";
+            case 106: yield "*";
+            case 111: yield "/";
+            case 61:
+            case 10: jButton11ActionPerformed(); yield null;
+            case 110:
+            case 44: yield ",";
+            case 8:
+                values.remove(values.size() - 1);
+                screen = screen.substring(0, screen.length() - 1);
+                jTextField1.setText(screen);
+            default: yield null;
+        };
+        if (btn != null) showOnScreen();
+        // 48 - 57
+        // 96 - 105
+        // 107 109 106 111 -> + - * /
+        // 10 -> enter
+        // 110 44 -> ,
+        // 8 backspace
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
+
+    private void jTextFieldScreen() {
         // screen
     }
 
-    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton0ActionPerformed() {
         // 0
         btn = "0";
         showOnScreen();
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton1ActionPerformed() {
         // 1
         btn = "1";
         showOnScreen();
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton2ActionPerformed() {
         // 2
         btn = "2";
         showOnScreen();
     }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton3ActionPerformed() {
         // 3
         btn = "3";
         showOnScreen();
     }
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton4ActionPerformed() {
         // 4
         btn = "4";
         showOnScreen();
     }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton5ActionPerformed() {
         // 5
         btn = "5";
         showOnScreen();
     }
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton6ActionPerformed() {
         // 6
         btn = "6";
         showOnScreen();
     }
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton7ActionPerformed() {
         // 7
         btn = "7";
         showOnScreen();
     }
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton8ActionPerformed() {
         // 8
         btn = "8";
         showOnScreen();
     }
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton9ActionPerformed() {
         // 9
         btn = "9";
         showOnScreen();
     }
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton12ActionPerformed() {
         // ,
         btn = ",";
         showOnScreen();
     }
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton14ActionPerformed() {
         // +
         btn = "+";
         showOnScreen();
     }
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton15ActionPerformed() {
         // -
         btn = "-";
         showOnScreen();
     }
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton16ActionPerformed() {
         // x
         btn = "*";
         showOnScreen();
     }
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton13ActionPerformed() {
         // /
         btn = "/";
         showOnScreen();
     }
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton17ActionPerformed() {
         // Square root
         btn = "\u221A";
         showOnScreen();
     }
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton20ActionPerformed() {
         // ^
         btn = "^";
         showOnScreen();
     }
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton18ActionPerformed() {
         // Erase
         values.remove(values.size() - 1);
         screen = screen.substring(0, screen.length() - 1);
         jTextField1.setText(screen);
     }
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton19ActionPerformed() {
         // C
         jTextField1.setText("0");
         screen = "0";
@@ -522,11 +589,11 @@ public class Calculadora extends javax.swing.JFrame {
         wait = false;
     }
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton11ActionPerformed() {
         // =
         // Joining digits
         for (int i = 0; i < values.size(); i++) {
-            if (isNumber(values.get(i)) == true) {
+            if (isNumber(values.get(i))) {
                 newValue += values.get(i);
                 values.set(i, "");
                 values.set(cont, newValue);
@@ -590,7 +657,7 @@ public class Calculadora extends javax.swing.JFrame {
         if (!isNumber(btn)
                 && values.size() > 1
                 && !isNumber(values.get(values.size() - 1))
-                && btn != "\u221a") {
+                && !btn.equals("\u221a")) {
             // If an operator is typed right after the other, replace the older one with the
             // recent
             values.set(values.size() - 1, btn);
@@ -660,7 +727,6 @@ public class Calculadora extends javax.swing.JFrame {
                         case "*":
                             values.set(i - 1, String.valueOf(finalValues[0] * finalValues[1]));
                             removeValues(i);
-                            continue;
                     }
                 }
             }
@@ -676,7 +742,6 @@ public class Calculadora extends javax.swing.JFrame {
                         case "+":
                             values.set(i - 1, String.valueOf(finalValues[0] + finalValues[1]));
                             removeValues(i);
-                            continue;
                     }
                 }
             }
@@ -718,11 +783,14 @@ public class Calculadora extends javax.swing.JFrame {
         // </editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Calculadora().setVisible(true);
             }
-        });
+        });*/
+        Calculadora calc = new Calculadora();
+        calc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
